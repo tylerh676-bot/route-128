@@ -1,0 +1,110 @@
+.Title { text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(200, 194, 194);
+    border: 2px solid black;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+   
+  
+  
+}
+
+
+body {
+    background-color: lightblue;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {  display: flex;
+    gap: 25px;
+    align-items: stretch;
+}
+    
+
+
+.leftalign { text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+   
+}
+
+
+.encounters { text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(200, 194, 194);
+    border: 2px solid black;
+    padding: 10px;
+    
+    flex: 1;
+    
+    
+}
+
+.links {text-align: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(200, 194, 194);
+    border: 2px solid black;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.battles { text-align: left;
+    background-color: rgb(200, 194, 194);
+    border: 2px solid black;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px;
+
+}
+
+.aquamagma { text-align: center;
+    background-color: rgb(200, 194, 194);
+    border: 2px solid black;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+        font-family: Arial, Helvetica, sans-serif;
+padding: 10px;
+}
+
+.centeralign { text-align: center;
+   
+}
+
+
+
+#teams { text-align: left}
+
+#surfingtrainer { text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.column {
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.purpleclass{ color: rgb(255, 255, 255);
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+
+.blackclass {color: rgb(0, 0, 0);
+font-family: Arial, Helvetica, sans-serif;}

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pokemonle</title>
+
+<style>
+body{
+    margin:0;
+    background:#121213;
+    color:white;
+    font-family:Arial, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+h1{
+    margin:20px;
+    color:#ffcb05;
+    text-shadow:2px 2px #2a75bb;
+    font-size:3rem;
+}
+
+#board{
+    display:grid;
+    grid-template-rows:repeat(7, 1fr);
+    gap:6px;
+    margin-top:10px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:6px;
+}
+
+.tile{
+    width:60px;
+    height:60px;
+    border:2px solid #3a3a3c;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    background:#121213;
+}
+
+.correct{ background:#538d4e; border-color:#538d4e; }
+.present{ background:#b59f3b; border-color:#b59f3b; }
+.absent{ background:#3a3a3c; border-color:#3a3a3c; }
+
+#message{
+    margin-top:20px;
+    font-size:1.3rem;
+    min-height:30px;
+}
+
+#restart{
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:1rem;
+    background:#2a75bb;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    display:none;
+}
+
+#restart:hover{
+    background:#1f5b91;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Pokemonle</h1>
+
+<div id="board"></div>
+<div id="message"></div>
+<button id="restart">Play Again</button>
+
+<script>
+const pokemonWords = [
+"GASTLY",
+"GENGAR",
+"MEWTWO",
+"PIGEON",
+"RAICHU",
+"WEEDLE",
+"KAKUNA",
+"MANKEX",
+"KYOGRE",
+"CUBONE",
+"FEAROW",
+"MUDKIP",
+"VULPIX",
+"ZAPDOS",
+"CROBAT",
+"GOLBAT",
+"TOGEPI",
+"LATIAS",
+"ODDISH",
+"TAUROS",
+"HORSEA",
+"LATIOS",
+"MACHOP",
+"PIPLUP",
+"PONYTA",
+"GRIMER",
+"KABUTO",
+"LAPRAS",
+"RAIKOU",
+"SEADRA",
+"STARLY",
+"DODRIO",
+"KIRLIA",
+"LEDIAN",
+"SPHEAL",
+"STARYU",
+"CLEFFA",
+"MEOWTH",
+"PHIONE",
+"SLUGMA",
+"BELDUM",
+"FEEBAS",
+"SEEDOT",
+"AGGRON",
+"DEWOTT",
+"ELEKID",
+"KRABBY",
+"LUXRAY",
+"PAWMWT",
+"PIDGEY",
+"CELEBI",
+"DEOXYS",
+"ESPEON",
+"GULPIN",
+"MAREEP",
+"MARILL",
+"PLUSLE",
+"ROWLET",
+"SCIZOR",
+"SPINDA",
+"ARCEUS",
+"FLYGON",
+"FURRET",
+"GLIGAR",
+"HOPPIP",
+"LAIRON",
+"METANG",
+"PALKIA",
+"PATRAT",
+"WOOPER",
+"EMBOAR",
+"LOMBRE",
+"SEALEO",
+"SOBBLE",
+"ZEKROM",
+"BALTOY",
+"DURANT",
+"KEDELO",
+"MOTHIM",
+"RABOOT",
+"SNOER",
+"WOOBAT",
+"BONSly",
+"DIALGA",
+"GOODRA",
+"KYUREM",
+"LILEEP",
+"REGICE",
+"SPOINK",
+"SWALOT",
+"WYNAUT",
+"MAWILE",
+"PHANPY",
+"APPLIN",
+"COSMOG",
+"DUSTOX",
+"GABITE",
+"GORLUK",
+"JOLTIK",
+"LITLEO",
+"QUAXLY",
+"SKITTY",
+"STUNKY",
+"SWABLU",
+"YAMASK",
+"BUIZEL",
+"CACNEA",
+"COMBEE",
+"DREEPY",
+"GLALIE",
+"GOLETT",
+"PIDOVE",
+"SPEWPA",
+"SWINUB",
+"TYRUNT",
+"WOOLOO",
+"AMAURA",
+"AUDINO",
+"DRAMPA",
+"LUNALA",
+"NOIBAT",
+"NYMBLE",
+"SMOLIV",
+"PYROAR",
+"ZACIAN",
+"ZARUDE",
+"ARCHEN",
+"CHATOT",
+"EISCUE",
+"KLEFKI",
+"SKIDDO",
+"SKRELP",
+"TYNAMO",
+"EMOLGA",
+"SWANNA",
+"ESPURR",
+"NICKIT",
+"RABSCA",
+"TINGLU",
+"VAROOM",
+"CARKOL",
+"COMFEY",
+"BEWEAR",
+"MELTAN",
+"KOMALA",
+"MINIOR",
+"CUFANT",
+"VELUZA"
+];
+
+const validWords = pokemonWords.filter(w => w.length === 6);
+
+let solution;
+let currentRow = 0;
+let currentCol = 0;
+let gameOver = false;
+
+const board = document.getElementById("board");
+const message = document.getElementById("message");
+const restartBtn = document.getElementById("restart");
+
+function createBoard(){
+    board.innerHTML = "";
+
+    for(let r = 0; r < 7; r++){
+        const row = document.createElement("div");
+        row.className = "row";
+
+        for(let c = 0; c < 6; c++){
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            tile.id = `r${r}c${c}`;
+            row.appendChild(tile);
+        }
+
+        board.appendChild(row);
+    }
+}
+
+function startGame(){
+    solution = validWords[Math.floor(Math.random() * validWords.length)];
+    currentRow = 0;
+    currentCol = 0;
+    gameOver = false;
+
+    message.textContent = "";
+    restartBtn.style.display = "none";
+
+    createBoard();
+
+    console.log("Answer:", solution);
+}
+
+function submitGuess(){
+    let guess = "";
+
+    for(let c = 0; c < 6; c++){
+        guess += document.getElementById(`r${currentRow}c${c}`).textContent;
+    }
+
+    guess = guess.toUpperCase();
+
+    let remaining = solution.split("");
+
+    for(let c = 0; c < 6; c++){
+        const tile = document.getElementById(`r${currentRow}c${c}`);
+
+        if(guess[c] === solution[c]){
+            tile.classList.add("correct");
+            remaining[c] = null;
+        }
+    }
+
+    for(let c = 0; c < 6; c++){
+        const tile = document.getElementById(`r${currentRow}c${c}`);
+
+        if(tile.classList.contains("correct")) continue;
+
+        const idx = remaining.indexOf(guess[c]);
+
+        if(idx !== -1){
+            tile.classList.add("present");
+            remaining[idx] = null;
+        } else {
+            tile.classList.add("absent");
+        }
+    }
+
+    if(guess === solution){
+        message.textContent = "You caught it! 🎉";
+        endGame();
+        return;
+    }
+
+    currentRow++;
+    currentCol = 0;
+
+    if(currentRow >= 7){
+        message.textContent = `Out of guesses! The Pokémon was ${solution}`;
+        endGame();
+    }
+}
+
+function endGame(){
+    gameOver = true;
+    restartBtn.style.display = "block";
+}
+
+document.addEventListener("keydown", (e) => {
+    if(gameOver) return;
+
+    if(e.key === "Backspace"){
+        if(currentCol > 0){
+            currentCol--;
+            document.getElementById(`r${currentRow}c${currentCol}`).textContent = "";
+        }
+        return;
+    }
+
+    if(e.key === "Enter"){
+        if(currentCol === 6){
+            submitGuess();
+        }
+        return;
+    }
+
+    if(/^[a-zA-Z]$/.test(e.key)){
+        if(currentCol < 6){
+            document.getElementById(`r${currentRow}c${currentCol}`).textContent =
+                e.key.toUpperCase();
+            currentCol++;
+        }
+    }
+});
+
+restartBtn.addEventListener("click", startGame);
+
+startGame();
+</script>
+
+<a href="../index.html">Return to main page</a>
+<br>
+<br>
+<br>
+</body>
+
+</html>

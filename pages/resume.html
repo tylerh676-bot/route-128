@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tyler Hancock | Business Analytics & Information Systems</title>
+
+<style>
+:root{
+    --navy:#0f172a;
+    --blue:#2563eb;
+    --light:#f8fafc;
+    --gray:#64748b;
+    --card:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:#1e293b;
+    line-height:1.7;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+header{
+    background:linear-gradient(135deg,var(--navy),#1e3a8a);
+    color:white;
+    padding:100px 0;
+}
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.hero-text{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    font-size:1.4rem;
+    font-weight:400;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:1.1rem;
+    color:#e2e8f0;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    background:white;
+    color:var(--blue);
+    padding:14px 28px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.3rem;
+    margin-bottom:50px;
+    color:var(--navy);
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.skill-card{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.skill-card h3{
+    color:var(--blue);
+    margin-bottom:15px;
+}
+
+.timeline-item{
+    background:white;
+    padding:30px;
+    border-left:6px solid var(--blue);
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.project{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    color:var(--blue);
+    text-decoration:none;
+    font-weight:600;
+}
+
+footer{
+    background:var(--navy);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+.highlight{
+    color:var(--blue);
+    font-weight:700;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:2.8rem;}
+.about{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container hero">
+
+<div class="hero-text">
+<h1>Tyler Hancock</h1>
+
+<h2>
+Business Analytics • Information Systems • Data & Technology Solutions
+</h2>
+
+<p>
+Information Systems student at Brigham Young University with interests in
+business analytics, business intelligence, data visualization, and
+technology-driven decision making.
+</p>
+
+<a href="https://www.linkedin.com/in/tyler-hancock-37382040a" target="_blank" class="btn">
+View LinkedIn Profile
+</a>
+
+</div>
+</div>
+</header>
+
+<!-- ABOUT -->
+<section>
+<div class="container">
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+<div class="card">
+<h3>Professional Summary</h3>
+<br>
+<p>
+I am a motivated student at Brigham Young University pursuing a career in
+business analytics and information systems. I have experience with SQL,
+Tableau, Excel, VBA, and business intelligence tools.
+</p>
+</div>
+
+<div class="card">
+<h3>Career Interests</h3>
+<br>
+<ul>
+<li>Business Analytics</li>
+<li>Data Visualization</li>
+<li>Information Systems</li>
+<li>Business Intelligence</li>
+<li>Process Improvement</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section style="background:white;">
+<div class="container">
+<h2 class="section-title">Education</h2>
+
+<div class="timeline-item">
+<h3>Brigham Young University</h3>
+<p><strong>Information Systems (Pre-Major)</strong></p>
+<p>2026 – Present</p>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+<div class="container">
+<h2 class="section-title">Experience</h2>
+
+<div class="timeline-item">
+<h3>Administrative Assistant</h3>
+<p><strong>PACS</strong> | Part-Time</p>
+<ul>
+<li>Maintain records and support business operations</li>
+<li>Improve workflow efficiency and organization</li>
+<li>Assist with scheduling and communication</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section style="background:white;">
+<div class="container">
+<h2 class="section-title">Technical Skills</h2>
+
+<div class="skills">
+
+<div class="skill-card">
+<h3>Data Analytics</h3>
+<p>SQL, reporting, and KPI analysis</p>
+</div>
+
+<div class="skill-card">
+<h3>Tableau</h3>
+<p>Dashboards, data visualization, storytelling</p>
+</div>
+
+<div class="skill-card">
+<h3>Excel & VBA</h3>
+<p>Automation and business modeling</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section style="background:white;">
+<div class="container">
+<h2 class="section-title">Featured Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<h3>Business Intelligence Dashboards</h3>
+<p>Built Tableau dashboards to analyze business performance trends.</p>
+</div>
+
+<div class="project">
+<h3>SQL Analysis</h3>
+<p>Developed queries to extract actionable insights from datasets.</p>
+</div>
+
+<div class="project">
+<h3>Automation</h3>
+<p>Used VBA to automate reporting workflows in Excel.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<div class="container contact">
+<h2 class="section-title">Let's Connect</h2>
+
+<p>📍 Provo, Utah</p>
+
+<p>
+<a href="https://www.linkedin.com/in/tyler-hancock-37382040a" target="_blank">
+LinkedIn Profile
+</a>
+<br>
+<a href="../index.html">Return to main page</a>
+</p>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Tyler Hancock | Business Analytics & Information Systems</p>
+</footer>
+
+</body>
+</html>
